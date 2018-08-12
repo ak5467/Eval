@@ -39,7 +39,7 @@ namespace Eval
                     averageRating = Return.As<double>("avgRating")
                 })
                 .OrderByDescending("f3.Rating")
-                .Limit(50)
+                //.Limit(50)
                 .Results.ToList();
             
             //find TP, FP, FN and TN
@@ -133,7 +133,7 @@ namespace Eval
                 .WithParam("userSK", userSK)
                 .Return<MovieDim>("movies")
                 .OrderByDescending("Weight")
-                .Limit(50)
+                //.Limit(50)
                 .Results.ToList();
 
 

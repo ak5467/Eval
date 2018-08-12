@@ -55,32 +55,32 @@ namespace Eval
 
             int user = 5;
             int movieid = 1;
-            //using (StreamWriter outputFile = new StreamWriter(Path.Combine(@"C:\Users\horcrux\Documents\Summer_2018\EvalFiles\", "ContentOld_60_noLimit.txt"), true))
-            //{
-            //    outputFile.WriteLine("User, Recall, Precision, F1 Score");
-            //    for (int i = 1; i <= 5; i++)
-            //    {
-            //        user = i;
-            //        //Console.WriteLine("Evaluating collaborative recommendation for user profile " + user);
-            //        Cypher.SetFlagDefault(user);
-            //        //List<double> CurrentEval = Cypher.MoviesBasedOnUserProfile(user, movieid);
-            //        List<double> CurrentEval = Cypher.ContentBasedEval(user, movieid);
-            //        Recall = Math.Round(CurrentEval[0], 4);
-            //        Precision = Math.Round(CurrentEval[1], 4);
-            //        //Console.WriteLine("Recall: " + Recall);
-            //        //Console.WriteLine("Precision: " + Precision);
-            //        Double fScore = (2 * Recall * Precision) / (Precision + Recall);
-            //        //Console.WriteLine("F-Score: " + fScore);
-            //        outputFile.WriteLine("User " + i);
-            //        outputFile.WriteLine("Confusion Matrix:");
-            //        //TP FP
-            //        //FN TN
-            //        outputFile.WriteLine(CurrentEval[2] + " " + CurrentEval[3]);
-            //        outputFile.WriteLine(CurrentEval[4] + " " + CurrentEval[5]);
-            //        outputFile.WriteLine("Recall: " + Recall + "\nPrecision: " + Precision + "\nF1 Score: " + fScore);
-            //        outputFile.WriteLine(" ");
-            //    }
-            //}
+            using (StreamWriter outputFile = new StreamWriter(Path.Combine(@"C:\Users\horcrux\Documents\Summer_2018\EvalFiles\", "ContentOld_60_noLimit.txt"), true))
+            {
+                outputFile.WriteLine("User, Recall, Precision, F1 Score");
+                for (int i = 1; i <= 5; i++)
+                {
+                    user = i;
+                    //Console.WriteLine("Evaluating collaborative recommendation for user profile " + user);
+                    Cypher.SetFlagDefault(user);
+                    //List<double> CurrentEval = Cypher.MoviesBasedOnUserProfile(user, movieid);
+                    CurrentEval = Cypher.ContentBasedEval(user, movieid);
+                    Recall = Math.Round(CurrentEval[0], 4);
+                    Precision = Math.Round(CurrentEval[1], 4);
+                    //Console.WriteLine("Recall: " + Recall);
+                    //Console.WriteLine("Precision: " + Precision);
+                    fScore = (2 * Recall * Precision) / (Precision + Recall);
+                    //Console.WriteLine("F-Score: " + fScore);
+                    outputFile.WriteLine("User " + i);
+                    outputFile.WriteLine("Confusion Matrix:");
+                    //TP FP
+                    //FN TN
+                    outputFile.WriteLine(CurrentEval[2] + " " + CurrentEval[3]);
+                    outputFile.WriteLine(CurrentEval[4] + " " + CurrentEval[5]);
+                    outputFile.WriteLine("Recall: " + Recall + "\nPrecision: " + Precision + "\nF1 Score: " + fScore);
+                    outputFile.WriteLine(" ");
+                }
+            }
 
 
             //Console.WriteLine("Evaluating content-Based recommendation for user profile " + user + " for top 50 movies");
@@ -97,7 +97,7 @@ namespace Eval
             //Console.WriteLine("Recall: " + Recall + " | Precision: " + Precision + "\nF1 Score: " + fScore);
 
 
-            Console.WriteLine("Evaluating collaborative recommendation for user profile " + user + " for top 50 movies");
+            Console.WriteLine("Evaluating collaborative recommendation for user profile " + user);
             Cypher.SetFlagDefault(user);
             CurrentEval = Cypher.MoviesBasedOnUserProfile(user, movieid);
             Recall = Math.Round(CurrentEval[0], 4);
